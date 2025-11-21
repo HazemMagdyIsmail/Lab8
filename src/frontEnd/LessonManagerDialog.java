@@ -1,12 +1,5 @@
 package frontEnd;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
-import *;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,9 +9,8 @@ public class LessonManagerDialog extends JDialog {
     private JList<LessonData> jListLessons;
     private JButton btnAdd, btnEdit, btnDelete, btnClose;
     private DefaultListModel<LessonData> model;
-    private String courseTitle; 
+    private String courseTitle;
 
-  
     public LessonManagerDialog(Frame parent, boolean modal, String courseTitle, List<LessonData> initial) {
         super(parent, modal);
         this.courseTitle = courseTitle;
@@ -68,7 +60,6 @@ public class LessonManagerDialog extends JDialog {
         setSize(450, 300);
     }
 
-    // --- actions ---
     private void onAdd() {
         LessonEditorDialog ed = new LessonEditorDialog((Frame) getOwner(), true, null);
         ed.setLocationRelativeTo(this);
@@ -106,21 +97,21 @@ public class LessonManagerDialog extends JDialog {
         model.remove(idx);
     }
 
-    
     public List<LessonData> getLessons() {
         List<LessonData> out = new ArrayList<>();
         for (int i = 0; i < model.size(); i++) out.add(model.getElementAt(i));
         return out;
     }
 
-    
     public static class LessonData {
         private String id;
         private String title;
         private String content;
 
         public LessonData() {}
-        public LessonData(String id, String title, String content) { this.id=id; this.title=title; this.content=content; }
+        public LessonData(String id, String title, String content) { 
+            this.id=id; this.title=title; this.content=content; 
+        }
 
         public String getId(){ return id; }
         public void setId(String id){ this.id = id; }
@@ -129,7 +120,8 @@ public class LessonManagerDialog extends JDialog {
         public String getContent(){ return content; }
         public void setContent(String content){ this.content = content; }
 
-        @Override public String toString(){ return title == null ? "<no title>" : title; }
+        @Override 
+        public String toString(){ return title == null ? "<no title>" : title; }
     }
 
     private static class LessonEditorDialog extends JDialog {
@@ -180,13 +172,21 @@ public class LessonManagerDialog extends JDialog {
 
         private void onSave() {
             String t = txtTitle.getText().trim();
-            if (t.isEmpty()) { JOptionPane.showMessageDialog(this, "Title required."); txtTitle.requestFocus(); return; }
+            if (t.isEmpty()) { 
+                JOptionPane.showMessageDialog(this, "Title required."); 
+                txtTitle.requestFocus(); 
+                return; 
+            }
             lesson.setTitle(t);
             lesson.setContent(txtContent.getText());
             saved = true;
             dispose();
         }
-        private void onCancel() { saved = false; dispose(); }
+        
+        private void onCancel() { 
+            saved = false; 
+            dispose(); 
+        }
 
         public boolean isSaved() { return saved; }
         public LessonData getLesson() { return lesson; }
