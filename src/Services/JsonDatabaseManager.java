@@ -13,7 +13,7 @@ public class JsonDatabaseManager {
 
     public static List<Course> readCourses() {
         File file = new File(COURSES_FILE);
-        
+
         if (!file.exists()) {
             return new ArrayList<>();
         }
@@ -35,7 +35,7 @@ public class JsonDatabaseManager {
         if (courses == null) {
             courses = new ArrayList<>();
         }
-        
+
         try (FileWriter writer = new FileWriter(COURSES_FILE)) {
             gson.toJson(courses, writer);
         } catch (IOException e) {

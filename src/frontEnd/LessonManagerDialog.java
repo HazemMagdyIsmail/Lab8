@@ -109,8 +109,8 @@ public class LessonManagerDialog extends JDialog {
         private String content;
 
         public LessonData() {}
-        public LessonData(String id, String title, String content) { 
-            this.id=id; this.title=title; this.content=content; 
+        public LessonData(String id, String title, String content) {
+            this.id=id; this.title=title; this.content=content;
         }
 
         public String getId(){ return id; }
@@ -120,7 +120,7 @@ public class LessonManagerDialog extends JDialog {
         public String getContent(){ return content; }
         public void setContent(String content){ this.content = content; }
 
-        @Override 
+        @Override
         public String toString(){ return title == null ? "<no title>" : title; }
     }
 
@@ -172,20 +172,20 @@ public class LessonManagerDialog extends JDialog {
 
         private void onSave() {
             String t = txtTitle.getText().trim();
-            if (t.isEmpty()) { 
-                JOptionPane.showMessageDialog(this, "Title required."); 
-                txtTitle.requestFocus(); 
-                return; 
+            if (t.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Title required.");
+                txtTitle.requestFocus();
+                return;
             }
             lesson.setTitle(t);
             lesson.setContent(txtContent.getText());
             saved = true;
             dispose();
         }
-        
-        private void onCancel() { 
-            saved = false; 
-            dispose(); 
+
+        private void onCancel() {
+            saved = false;
+            dispose();
         }
 
         public boolean isSaved() { return saved; }

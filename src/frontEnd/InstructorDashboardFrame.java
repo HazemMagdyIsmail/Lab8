@@ -83,37 +83,37 @@ public class InstructorDashboardFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnCreate)
-                        .addComponent(btnEdit))
-                    .addComponent(btnDelete)
-                    .addComponent(btnManageLessons)
-                    .addComponent(btnViewEnrolled))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(btnCreate)
+                                                .addComponent(btnEdit))
+                                        .addComponent(btnDelete)
+                                        .addComponent(btnManageLessons)
+                                        .addComponent(btnViewEnrolled))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnManageLessons)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnViewEnrolled))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(148, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnCreate)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEdit)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnDelete)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnManageLessons)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnViewEnrolled))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,7 +123,7 @@ public class InstructorDashboardFrame extends javax.swing.JFrame {
         int idx = jListCourses.getSelectedIndex();
         if (idx < 0) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Select a course first.", "No selection", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    "Select a course first.", "No selection", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -175,8 +175,8 @@ public class InstructorDashboardFrame extends javax.swing.JFrame {
             jListCourses.setSelectedIndex(model.size() - 1);
 
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Course created locally and instructor updated (id: " + newCourseId + ")",
-                "Created", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    "Course created locally and instructor updated (id: " + newCourseId + ")",
+                    "Created", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -193,7 +193,7 @@ public class InstructorDashboardFrame extends javax.swing.JFrame {
 
         javax.swing.JOptionPane.showMessageDialog(this,
                 "Enrolled students for course:\n" + selected +
-                "\n\n(Backend not connected yet)",
+                        "\n\n(Backend not connected yet)",
                 "Enrolled Students",
                 javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }
@@ -221,7 +221,7 @@ public class InstructorDashboardFrame extends javax.swing.JFrame {
 
         if (selectedTitle == null) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Select a course first.", "No selection", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    "Select a course first.", "No selection", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -233,14 +233,14 @@ public class InstructorDashboardFrame extends javax.swing.JFrame {
             java.util.List<LessonManagerDialog.LessonData> lessons = dlg.getLessons();
             if (lessons != null && !lessons.isEmpty()) {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                    "Lessons for \"" + selectedTitle + "\": " + lessons.size() +
-                    "\n(Backend not connected yet)",
-                    "Lessons", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        "Lessons for \"" + selectedTitle + "\": " + lessons.size() +
+                                "\n(Backend not connected yet)",
+                        "Lessons", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (NoClassDefFoundError | Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Lesson manager not available in this build.\nYou can still add lessons later via backend tools.",
-                "Not Implemented", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    "Lesson manager not available in this build.\nYou can still add lessons later via backend tools.",
+                    "Not Implemented", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

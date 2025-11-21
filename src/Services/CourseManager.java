@@ -13,7 +13,7 @@ public class CourseManager {
         if (courses == null) {
             courses = new ArrayList<>();
         }
-        
+
         int newId = generateCourseId(courses);
         Course course = new Course(newId, title, description, instructorId);
         courses.add(course);
@@ -38,7 +38,7 @@ public class CourseManager {
     public void deleteCourse(int courseId) {
         List<Course> courses = JsonDatabaseManager.readCourses();
         if (courses == null) return;
-        
+
         courses.removeIf(c -> c != null && c.getCourseId() == courseId);
         JsonDatabaseManager.writeCourses(courses);
     }
@@ -58,7 +58,7 @@ public class CourseManager {
     public List<Course> getCoursesByInstructor(int instructorId) {
         List<Course> courses = JsonDatabaseManager.readCourses();
         List<Course> result = new ArrayList<>();
-        
+
         if (courses == null) return result;
 
         for (Course c : courses) {
@@ -83,7 +83,7 @@ public class CourseManager {
                 if (c.getStudents() == null) {
                     c.setStudents(new ArrayList<>());
                 }
-                
+
                 if (!c.getStudents().contains(studentId)) {
                     c.getStudents().add(studentId);
                     JsonDatabaseManager.writeCourses(courses);
@@ -99,7 +99,7 @@ public class CourseManager {
     public List<Course> getEnrolledCourses(int studentId) {
         List<Course> courses = JsonDatabaseManager.readCourses();
         List<Course> enrolledCourses = new ArrayList<>();
-        
+
         if (courses == null) return enrolledCourses;
 
         for (Course c : courses) {

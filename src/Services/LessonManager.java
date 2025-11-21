@@ -10,7 +10,7 @@ public class LessonManager {
         if (course == null || course.getLessons() == null) {
             return 1;
         }
-        
+
         List<Lesson> lessons = course.getLessons();
         int maxId = 0;
         for (Lesson l : lessons) {
@@ -30,7 +30,7 @@ public class LessonManager {
                 if (c.getLessons() == null) {
                     c.setLessons(new ArrayList<>());
                 }
-                
+
                 int newId = generateLessonId(c);
                 Lesson lesson = new Lesson(newId, title, content, new ArrayList<>());
                 c.getLessons().add(lesson);
