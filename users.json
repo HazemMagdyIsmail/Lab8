@@ -1,0 +1,21 @@
+[
+    {
+        "role": "Instructor",
+        "createdCourses": [
+            "6329ab17-84bd-4088-9395-346302909f7b",
+            "ae8454c1-6f54-470d-b99b-161ac04f2d63"
+        ],
+        "userId": "2fc7fc87-fb1f-4cae-8aa3-7228642b7177",
+        "email": "aadf.com",
+        "passwordHash": "8a86c4eecf12446ff273afc03e1b3a09a911d0b7981db1af58cb45c439161295",
+        "username": "i"
+    },
+    {
+        "role": "Instructor",
+        "createdCourses": [],
+        "userId": "aa73feb4-a0de-4144-a845-6f88c3c42aa3",
+        "email": "aa@gmail.com",
+        "passwordHash": "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506",
+        "username": "a"
+    }
+]
