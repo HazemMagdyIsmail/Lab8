@@ -1,7 +1,9 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Course {
     private int courseId;
@@ -11,6 +13,7 @@ public class Course {
     private List<Integer> students;
     private List<Lesson> lessons;
     private String status;
+    private Map<String, Object> analyticsData;
 
     public Course(int courseId, String title, String description, int instructorId){
         this.courseId = courseId;
@@ -20,6 +23,7 @@ public class Course {
         this.students = new ArrayList<>();
         this.lessons = new ArrayList<>();
         this.status = "PENDING";
+        this.analyticsData = new HashMap<>();
     }
 
     public int getCourseId() {
@@ -76,6 +80,14 @@ public class Course {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Map<String, Object> getAnalyticsData() {
+        return analyticsData;
+    }
+
+    public void setAnalyticsData(Map<String, Object> analyticsData) {
+        this.analyticsData = analyticsData;
     }
     
      public String toString(){
