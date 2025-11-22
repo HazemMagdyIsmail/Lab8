@@ -10,6 +10,7 @@ public class Course {
     private int instructorId;
     private List<Integer> students;
     private List<Lesson> lessons;
+    private String status;
 
     public Course(int courseId, String title, String description, int instructorId){
         this.courseId = courseId;
@@ -18,6 +19,7 @@ public class Course {
         this.instructorId = instructorId;
         this.students = new ArrayList<>();
         this.lessons = new ArrayList<>();
+        this.status = "PENDING";
     }
 
     public int getCourseId() {
@@ -67,6 +69,15 @@ public class Course {
     public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
      public String toString(){
      return title + " (ID: " + courseId + ")";
  }
