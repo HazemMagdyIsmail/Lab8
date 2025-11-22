@@ -71,7 +71,45 @@ public class CourseManager {
 
     public List<Course> getAllAvailableCourses() {
         List<Course> courses = JsonDatabaseManager.readCourses();
-        return courses != null ? courses : new ArrayList<>();
+        List<Course> approvedcourses = new ArrayList<>();
+        if (courses != null) {
+            for (int i = 0; i < courses.size(); i++) {
+                Course c = courses.get(i);
+                if (c != null && "APPROVED".equalsIgnoreCase(c.getStatus())) {
+                    approvedcourses.add(c);
+                }
+            }
+        }
+        return approvedcourses;
+    }
+    
+    public List<Course> getPendingCourses() {
+        List<Course> courses = JsonDatabaseManager.readCourses();
+        List<Course> pendingCourses = new ArrayList<>();
+        if (courses != null) {
+            for (int i = 0; i < courses.size(); i++) {
+                Course c = courses.get(i);
+                if (c != null && "PENDING".equalsIgnoreCase(c.getStatus())) {
+                    pendingCourses.add(c);
+                }
+            }
+        }
+        return pendingCourses;
+    }
+
+    public boolean updateCourseStatus(int courseId, String newStatus) {
+        List<Course> courses = JsonDatabaseManager.readCourses();
+        if (courses == null) return false;
+
+        for (int i = 0; i < courses.size(); i++) {
+            Course c = courses.get(i);
+            if (c != null && c.getCourseId() == courseId) {
+                c.setStatus(newStatus);
+                JsonDatabaseManager.writeCourses(courses);
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean enrollStudentInCourse(int studentId, int courseId) {
