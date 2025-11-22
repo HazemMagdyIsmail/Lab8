@@ -7,6 +7,7 @@ package database;
 import models.User;
 import models.Student;
 import models.Instructor;
+import models.Admin;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -173,6 +174,8 @@ public class JsonUserDatabase {
                 }
 
                 return new Instructor(userId, username, email, passwordHash, createdCourses);
+            } else if (role.equalsIgnoreCase("Admin")) {
+                return new Admin(userId, username, email, passwordHash);
             }
 
         } catch (Exception e) {
