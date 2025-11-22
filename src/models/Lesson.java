@@ -8,6 +8,7 @@ public class Lesson {
     private String title;
     private String content;
     private List<String> resources;
+    private boolean hasQuiz;
 
     public Lesson(int lessonId, String title, String content, List<String> resources){
         this.lessonId = lessonId;
@@ -47,4 +48,12 @@ public class Lesson {
     public void setResources(List<String> resources) {
         this.resources = resources;
     }
+
+    public boolean isHasQuiz() {
+        return hasQuiz;
+    }
+
+    public void setHasQuiz(boolean hasQuiz) {
+        this.hasQuiz = hasQuiz;
+    } 
 }
