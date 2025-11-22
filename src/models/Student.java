@@ -14,12 +14,14 @@ import java.util.Map;
 public class Student extends User {
     private List<String> enrolledCourses;
     private Map<String, Object> progress;
+    private List<QuizAttempt> quizAttempts;
 
     // Constructor for new student
     public Student(String username, String email, String passwordHash) {
         super(username, email, passwordHash, "Student");
         this.enrolledCourses = new ArrayList<>();
         this.progress = new HashMap<>();
+        this.quizAttempts = new ArrayList<>();
     }
 
     public Student(String userId, String username, String email, String passwordHash, 
@@ -27,6 +29,7 @@ public class Student extends User {
         super(userId, username, email, passwordHash, "Student");
         this.enrolledCourses = enrolledCourses != null ? enrolledCourses : new ArrayList<>();
         this.progress = progress != null ? progress : new HashMap<>();
+        this.quizAttempts = new ArrayList<>();
     }
 
     @Override
@@ -61,6 +64,21 @@ public class Student extends User {
 
     public void setProgress(Map<String, Object> progress) {
         this.progress = progress;
+    }
+
+    public List<QuizAttempt> getQuizAttempts() {
+        return quizAttempts;
+    }
+
+    public void setQuizAttempts(List<QuizAttempt> quizAttempts) {
+        this.quizAttempts = quizAttempts;
+    }
+
+    public void addQuizAttempt(QuizAttempt attempt) {
+        if (this.quizAttempts == null) {
+            this.quizAttempts = new ArrayList<>();
+        }
+        this.quizAttempts.add(attempt);
     }
 
     @Override
