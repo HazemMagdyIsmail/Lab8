@@ -5,9 +5,12 @@ public class Admin extends User {
          super(username, email, passwordHash, "Admin");
      }
 
-        public void manageUsers() {
-            // Implementation for managing users
-        }
+    public Admin(String userId, String username, String email, String passwordHash) {
+        super(userId, username, email, passwordHash, "Admin");
+    }
 
-
+     @Override
+    public String getDetails() {
+        return "Admin: " + username + " (" + email + ")";
+    }
 }
