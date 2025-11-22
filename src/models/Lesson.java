@@ -8,12 +8,14 @@ public class Lesson {
     private String title;
     private String content;
     private List<String> resources;
+    private Quiz quiz;
 
     public Lesson(int lessonId, String title, String content, List<String> resources){
         this.lessonId = lessonId;
         this.title = title;
         this.content = content;
         this.resources = resources;
+        this.quiz = null;
     }
 
     public int getLessonId() {
@@ -46,5 +48,17 @@ public class Lesson {
 
     public void setResources(List<String> resources) {
         this.resources = resources;
+    }
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
+
+    public boolean hasQuiz() {
+        return quiz != null;
     }
 }
