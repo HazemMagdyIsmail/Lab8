@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Dell
+ *
  */
 
 public class CertificatePanel extends javax.swing.JPanel {

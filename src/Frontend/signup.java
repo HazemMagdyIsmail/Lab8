@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Asus
+
  */
 public class SignUp extends javax.swing.JPanel {
 

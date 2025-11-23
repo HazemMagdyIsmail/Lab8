@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 /**
  *
- * @author Asus
+ 
  */
 public class StudentDashBoard extends javax.swing.JPanel {
 private CourseDB courseDB = new CourseDB("courses.json");

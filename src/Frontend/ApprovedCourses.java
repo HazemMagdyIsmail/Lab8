@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ *
  */
 public class ApprovedCourses extends javax.swing.JPanel {
 

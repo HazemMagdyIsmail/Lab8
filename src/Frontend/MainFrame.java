@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Asus
+ * 
  */
 public class MainFrame extends javax.swing.JFrame {
     

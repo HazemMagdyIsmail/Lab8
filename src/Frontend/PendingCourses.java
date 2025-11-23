@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Asus
+
  */
 public class PendingCourses extends javax.swing.JPanel {
 

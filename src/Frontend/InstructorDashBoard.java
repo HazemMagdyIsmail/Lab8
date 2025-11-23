@@ -47,15 +47,14 @@ public InstructorDashBoard(String username ) {
   
 
 JScrollPane courseScroll = new JScrollPane(courseList);
-courseScroll.setPreferredSize(new Dimension(300, 300));   // ← control size here
+courseScroll.setPreferredSize(new Dimension(300, 300));  
 
 coursePanel.setLayout(new BorderLayout());
 coursePanel.add(courseScroll, BorderLayout.CENTER);
 
 
 JScrollPane lessonScroll = new JScrollPane(lessonList);
-lessonScroll.setPreferredSize(new Dimension(300, 300));   // ← control size here
-
+lessonScroll.setPreferredSize(new Dimension(300, 300));   
 LessonPanel.setLayout(new BorderLayout());
 LessonPanel.add(lessonScroll, BorderLayout.CENTER);
 

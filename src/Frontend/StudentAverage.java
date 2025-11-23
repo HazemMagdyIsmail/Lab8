@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 /**
  *
- * @author Mohamed
+
  */
 public class StudentAverage extends javax.swing.JFrame {
     

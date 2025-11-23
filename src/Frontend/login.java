@@ -13,7 +13,7 @@ import static BackEnd.AuthService.AuthStudent;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Asus
+
  */
 public class LogIn extends javax.swing.JPanel {
 

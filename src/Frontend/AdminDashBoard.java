@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Asus
+ *
  */
 public class AdminDashBoard extends javax.swing.JPanel {
 //     private String loggedInstructor;

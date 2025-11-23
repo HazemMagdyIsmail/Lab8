@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import org.jfree.data.general.DefaultPieDataset;
 /**
  *
- * @author Mohamed
+ *
  */
 public class CompletionCourse extends javax.swing.JFrame {
     

@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 /**
  *
- * @author Mohamed
+
  */
 public class QuizAverage extends javax.swing.JFrame {
         private ArrayList<Double> averages;
