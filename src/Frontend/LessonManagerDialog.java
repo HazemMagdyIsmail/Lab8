@@ -23,6 +23,7 @@ public class LessonManagerDialog extends JDialog {
     }
 
     private void initComponents() {
+        
         model = new DefaultListModel<>();
         jListLessons = new JList<>(model);
         jListLessons.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
