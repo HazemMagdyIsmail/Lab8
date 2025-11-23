@@ -1,150 +1,185 @@
 package Services;
 
+import database.CourseJsonDatabase;
 import models.Course;
-import java.util.*;
+
+import java.util.List;
 
 public class CourseManager {
+
+    // Generate a new integer course ID based on existing courses
     private int generateCourseId(List<Course> courses) {
-        return (int) (Math.random() * 9000) + 1000;
+        // Find max existing courseId, then +1
+        int max = 0;
+        for (Course c : courses) {
+            if (c.getCourseId() > max) {
+                max = c.getCourseId();
+            }
+        }
+        return max + 1;
     }
 
-    public Course createCourse(String title, String description, int instructorId) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        if (courses == null) {
-            courses = new ArrayList<>();
-        }
+    /**
+     * Create a new course.
+     * @param title     Title of the course.
+     * @param description Description of the course.
+     * @param instructorId  The instructor's userId (String).
+     * @return The created Course object, or null if failed.
+     */
+    public Course createCourse(String title, String description, String instructorId) {
+        // Load existing courses
+        CourseJsonDatabase.loadCourses();
+        List<Course> courses = CourseJsonDatabase.getAllCourses();
 
         int newId = generateCourseId(courses);
         Course course = new Course(newId, title, description, instructorId);
-        courses.add(course);
-        JsonDatabaseManager.writeCourses(courses);
+        course.setStudents(new java.util.ArrayList<>());
+        course.setLessons(new java.util.ArrayList<>());
+        course.setStatus("PENDING");
+
+        boolean added = CourseJsonDatabase.addCourse(course);
+        if (!added) {
+            return null;
+        }
         return course;
     }
 
-    public void updateCourse(int courseId, String newTitle, String newDescription) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        if (courses == null) return;
-
-        for (Course c : courses) {
-            if (c != null && c.getCourseId() == courseId) {
-                c.setTitle(newTitle);
-                c.setDescription(newDescription);
-                break;
-            }
+    /**
+     * Update title and description of a course.
+     */
+    public boolean updateCourse(int courseId, String newTitle, String newDescription) {
+        CourseJsonDatabase.loadCourses();
+        Course c = CourseJsonDatabase.getCourseById(courseId);
+        if (c == null) {
+            return false;
         }
-        JsonDatabaseManager.writeCourses(courses);
+        c.setTitle(newTitle);
+        c.setDescription(newDescription);
+        CourseJsonDatabase.saveCourses();
+        return true;
     }
 
-    public void deleteCourse(int courseId) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        if (courses == null) return;
-
-        courses.removeIf(c -> c != null && c.getCourseId() == courseId);
-        JsonDatabaseManager.writeCourses(courses);
+    /**
+     * Delete a course by its ID.
+     */
+    public boolean deleteCourse(int courseId) {
+        CourseJsonDatabase.loadCourses();
+        Course c = CourseJsonDatabase.getCourseById(courseId);
+        if (c == null) {
+            return false;
+        }
+        CourseJsonDatabase.removeCourse(courseId);
+        return true;
     }
 
+    /**
+     * Get a course by ID.
+     */
     public Course getCourseById(int courseId) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        if (courses == null) return null;
-
-        for (Course c : courses) {
-            if (c != null && c.getCourseId() == courseId) {
-                return c;
-            }
-        }
-        return null;
+        CourseJsonDatabase.loadCourses();
+        return CourseJsonDatabase.getCourseById(courseId);
     }
 
-    public List<Course> getCoursesByInstructor(int instructorId) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        List<Course> result = new ArrayList<>();
-
-        if (courses == null) return result;
-
-        for (Course c : courses) {
-            if (c != null && c.getInstructorId() == instructorId) {
+    /**
+     * Get all courses created by a specific instructor.
+     * @param instructorId The instructor's userId (String).
+     */
+    public List<Course> getCoursesByInstructor(String instructorId) {
+        CourseJsonDatabase.loadCourses();
+        List<Course> all = CourseJsonDatabase.getAllCourses();
+        java.util.List<Course> result = new java.util.ArrayList<>();
+        for (Course c : all) {
+            if (instructorId.equals(c.getInstructorId())) {
                 result.add(c);
             }
         }
         return result;
     }
 
+    /**
+     * Get all approved / available courses.
+     */
     public List<Course> getAllAvailableCourses() {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        List<Course> approvedcourses = new ArrayList<>();
-        if (courses != null) {
-            for (int i = 0; i < courses.size(); i++) {
-                Course c = courses.get(i);
-                if (c != null && "APPROVED".equalsIgnoreCase(c.getStatus())) {
-                    approvedcourses.add(c);
-                }
+        CourseJsonDatabase.loadCourses();
+        List<Course> all = CourseJsonDatabase.getAllCourses();
+        java.util.List<Course> approved = new java.util.ArrayList<>();
+        for (Course c : all) {
+            if ("APPROVED".equalsIgnoreCase(c.getStatus())) {
+                approved.add(c);
             }
         }
-        return approvedcourses;
+        return approved;
     }
-    
+
+    /**
+     * Get all courses in pending status.
+     */
     public List<Course> getPendingCourses() {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        List<Course> pendingCourses = new ArrayList<>();
-        if (courses != null) {
-            for (int i = 0; i < courses.size(); i++) {
-                Course c = courses.get(i);
-                if (c != null && "PENDING".equalsIgnoreCase(c.getStatus())) {
-                    pendingCourses.add(c);
-                }
+        CourseJsonDatabase.loadCourses();
+        List<Course> all = CourseJsonDatabase.getAllCourses();
+        java.util.List<Course> pending = new java.util.ArrayList<>();
+        for (Course c : all) {
+            if ("PENDING".equalsIgnoreCase(c.getStatus())) {
+                pending.add(c);
             }
         }
-        return pendingCourses;
+        return pending;
     }
 
+    /**
+     * Update the status of a course.
+     */
     public boolean updateCourseStatus(int courseId, String newStatus) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        if (courses == null) return false;
-
-        for (int i = 0; i < courses.size(); i++) {
-            Course c = courses.get(i);
-            if (c != null && c.getCourseId() == courseId) {
-                c.setStatus(newStatus);
-                JsonDatabaseManager.writeCourses(courses);
-                return true;
-            }
+        CourseJsonDatabase.loadCourses();
+        Course c = CourseJsonDatabase.getCourseById(courseId);
+        if (c == null) {
+            return false;
         }
-        return false;
+        c.setStatus(newStatus);
+        CourseJsonDatabase.saveCourses();
+        return true;
     }
 
-    public boolean enrollStudentInCourse(int studentId, int courseId) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        if (courses == null) return false;
+    /**
+     * Enroll a student in a course.
+     * @param studentId String id of student user.
+     * @param courseId course integer id.
+     */
+    public boolean enrollStudentInCourse(String studentId, int courseId) {
+        CourseJsonDatabase.loadCourses();
+        Course c = CourseJsonDatabase.getCourseById(courseId);
+        if (c == null) return false;
 
-        for (Course c : courses) {
-            if (c != null && c.getCourseId() == courseId) {
-                if (c.getStudents() == null) {
-                    c.setStudents(new ArrayList<>());
-                }
-
-                if (!c.getStudents().contains(studentId)) {
-                    c.getStudents().add(studentId);
-                    JsonDatabaseManager.writeCourses(courses);
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+        List<String> students = c.getStudentsAsString(); // assume you change Course.getStudents to List<String>
+        if (students == null) {
+            students = new java.util.ArrayList<>();
+            c.setStudentsAsString(students);
         }
-        return false;
+
+        if (!students.contains(studentId)) {
+            students.add(studentId);
+            CourseJsonDatabase.saveCourses();
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public List<Course> getEnrolledCourses(int studentId) {
-        List<Course> courses = JsonDatabaseManager.readCourses();
-        List<Course> enrolledCourses = new ArrayList<>();
-
-        if (courses == null) return enrolledCourses;
-
-        for (Course c : courses) {
-            if (c != null && c.getStudents() != null && c.getStudents().contains(studentId)) {
-                enrolledCourses.add(c);
+    /**
+     * Get courses in which a student is enrolled.
+     * @param studentId string user ID.
+     */
+    public List<Course> getEnrolledCourses(String studentId) {
+        CourseJsonDatabase.loadCourses();
+        List<Course> all = CourseJsonDatabase.getAllCourses();
+        java.util.List<Course> enrolled = new java.util.ArrayList<>();
+        for (Course c : all) {
+            List<String> students = c.getStudentsAsString();
+            if (students != null && students.contains(studentId)) {
+                enrolled.add(c);
             }
         }
-        return enrolledCourses;
+        return enrolled;
     }
 }
+ 

@@ -1,7 +1,7 @@
 [
     {
         "role": "Instructor",
-        "createdCourses": [],
+        "createdCourses": ["47fd756d-6ed0-4348-84f6-e095d14bdbe3"],
         "userId": "1975843c-21ca-4e3b-84b4-831fb70db472",
         "email": "hazem@gmail.com",
         "passwordHash": "4e132a8e719bc61bc3f80b5c214468cc02bbb3392b05003334cfe26ed67eb159",
@@ -9,7 +9,10 @@
     },
     {
         "role": "Instructor",
-        "createdCourses": [],
+        "createdCourses": [
+            "033db762-78de-4180-9320-040c17d3ed45",
+            "6c804d40-e5be-4df2-b1bb-56d12aa076d0"
+        ],
         "userId": "8b82986a-1f61-4e0e-b679-ef185a15c947",
         "email": "patrick@gmail.com",
         "passwordHash": "4e132a8e719bc61bc3f80b5c214468cc02bbb3392b05003334cfe26ed67eb159",

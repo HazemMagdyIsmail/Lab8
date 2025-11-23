@@ -9,13 +9,13 @@ public class Course {
     private int courseId;
     private String title;
     private String description;
-    private int instructorId;
+    private String instructorId;
     private List<Integer> students;
     private List<Lesson> lessons;
     private String status;
     private Map<String, Object> analyticsData;
 
-    public Course(int courseId, String title, String description, int instructorId){
+    public Course(int courseId, String title, String description, String instructorId){
         this.courseId = courseId;
         this.title = title;
         this.description = description;
@@ -50,11 +50,11 @@ public class Course {
         this.description = description;
     }
 
-    public int getInstructorId() {
+    public String getInstructorId() {
         return instructorId;
     }
 
-    public void setInstructorId(int instructorId) {
+    public void setInstructorId(String instructorId) {
         this.instructorId = instructorId;
     }
 
