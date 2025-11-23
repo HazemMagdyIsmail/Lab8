@@ -56,7 +56,7 @@ public class QuizManager {
         for (int i = 0; i < questions.size(); i++) {
             Question question = questions.get(i);
             Integer studentAnswer = answers.get(question.getQuestionId());
-            if (studentAnswer != null && question.isCorrectAnswer(studentAnswer)) {
+            if (studentAnswer != null && question.isCorrect(studentAnswer)) {
                 score++;
             }
         }
