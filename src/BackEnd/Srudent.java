@@ -10,7 +10,7 @@ public class Srudent extends User {
      private ArrayList<QuizResult> quizResults;
 private ArrayList<Certificate> certificates = new ArrayList<>();
     public Srudent() {
-        // Needed for Gson
+ 
     this.enrolledCourses = new ArrayList<>();
     this.completedLessons = new ArrayList<>();
     this.quizResults = new ArrayList<>();
@@ -23,13 +23,13 @@ private ArrayList<Certificate> certificates = new ArrayList<>();
               validateEmail(email),
               sha256(passwordHash));
         
-        // Initialize lists
+       
         this.enrolledCourses = new ArrayList<>();
         this.completedLessons = new ArrayList<>();
         this.quizResults = new ArrayList<>();
     }
 
-    // ----------------- Validations -----------------
+   
     private static String validateStudentId(String id) {
         if (id != null && id.matches("S\\d+")) return id;
         return null;
@@ -51,7 +51,7 @@ private ArrayList<Certificate> certificates = new ArrayList<>();
         return email;
     }
 
-    // ----------------- Getters -----------------
+  
     public ArrayList<String> getEnrolledCourses() {
         return enrolledCourses;
     }
@@ -60,7 +60,7 @@ private ArrayList<Certificate> certificates = new ArrayList<>();
         return completedLessons;
     }
 
-    // ----------------- Course Methods -----------------
+
     public void enrollCourse(String courseId) {
         int courseid = Integer.parseInt(courseId.substring(1));
         if (courseid > 0 && !enrolledCourses.contains(courseId)) {

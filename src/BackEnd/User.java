@@ -7,7 +7,7 @@ public abstract class User {
     protected String email;
     protected String passwordHash;
 
-    public User() { } // Required for Gson
+    public User() { } 
 
     public User(String userId, String role, String username, String email, String passwordHash) {
         this.userId = userId;

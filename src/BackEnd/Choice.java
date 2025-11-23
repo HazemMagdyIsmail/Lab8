@@ -6,7 +6,7 @@ package BackEnd;
 
 /**
  *
- * @author Mohamed
+ * 
  */
 public class Choice {
      private String text;

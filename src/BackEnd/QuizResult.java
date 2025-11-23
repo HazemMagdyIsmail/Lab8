@@ -4,10 +4,8 @@
  */
 package BackEnd;
 
-/**
- *
- * @author eslamia
- */
+
+ 
 public class QuizResult {
     private String lessonId;
     private double score;

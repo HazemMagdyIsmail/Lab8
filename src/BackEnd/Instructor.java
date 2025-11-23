@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Instructor extends User {
 
-    private transient CourseDB courseDB; // transient so Gson ignores it
+    private transient CourseDB courseDB; 
 
     public Instructor() {
-        courseDB = new CourseDB("courses.json"); // needed for Gson
+        courseDB = new CourseDB("courses.json"); 
     }
 
     public Instructor(String username, String email, String passwordHash) {
@@ -17,12 +17,10 @@ public class Instructor extends User {
               validateUsername(username),
               validateEmail(email),
               sha256(passwordHash));
-        this.courseDB = new CourseDB("courses.json"); // initialize DB
+        this.courseDB = new CourseDB("courses.json"); 
     }
 
-    // -----------------
-    // Validations
-    // -----------------
+  
     private static String validateInstructorId(String id) {
         if (id != null && id.matches("I\\d+")) return id;
         return null;
@@ -44,9 +42,6 @@ public class Instructor extends User {
         return email;
     }
 
-    // -----------------
-    // Course operations
-    // -----------------
     public void createCourse(Course c) {
         if (c != null && c.getCourseId() != null) courseDB.add(c);
         else System.out.println("Invalid course");

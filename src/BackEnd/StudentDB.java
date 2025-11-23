@@ -53,7 +53,7 @@ public ArrayList<Srudent> load() {
     public boolean add(Srudent student) {
         ArrayList<Srudent> list = load();
 
-        // Prevent duplicate usernames
+    
         for (Srudent s : list) {
             if (s.getUsername().trim().equalsIgnoreCase(student.getUsername().trim())) {
                 System.out.println("Duplicate username. Student not added.");
@@ -61,7 +61,7 @@ public ArrayList<Srudent> load() {
             }
         }
 
-        // Assign sequential ID if null or duplicate
+        
         int nextId = list.stream()
                          .mapToInt(s -> {
                              try { return Integer.parseInt(s.getUserId().substring(1)); }
