@@ -49,7 +49,7 @@ public class Student extends User {
         }
     }
 
-    public void markLessonCompleted(String courseId, String lessonId) {
+    public void markLessonCompleted(int courseId, String lessonId) {
         Map<String, Boolean> courseLessons = lessonCompletion.get(courseId);
         if (courseLessons != null) {
             courseLessons.put(lessonId, true);
@@ -61,7 +61,7 @@ public class Student extends User {
         return courseLessons != null && Boolean.TRUE.equals(courseLessons.get(lessonId));
     }
 
-    public void addQuizAttempt(String courseId, QuizAttempt attempt) {
+    public void addQuizAttempt(int courseId, QuizAttempt attempt) {
         if (this.quizAttempts == null) {
             this.quizAttempts = new ArrayList<>();
         }

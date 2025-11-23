@@ -79,7 +79,7 @@ public class QuizManager {
         User user = userManager.getUserById(studentId);
         if (user instanceof Student) {
             Student student = (Student) user;
-            student.addQuizAttempt(attempt);
+            student.addQuizAttempt(courseId,attempt);
             
             if (passed) {
                 student.getProgress().put(lessonId + "", true);
