@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+<<<<<<< HEAD
             <name>assa</name>
+=======
+            <name>lab8</name>
+>>>>>>> e18fbe490fbd789da74dd4d7f08a71121d1e53f4
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
