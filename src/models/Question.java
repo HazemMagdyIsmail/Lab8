@@ -7,13 +7,17 @@ public class Question {
     private String questionText;
     private List<String> options;
     private int correctAnswerIndex;
+    private int points;
 
-    public Question(int questionId, String questionText, List<String> options, int correctAnswerIndex) {
-        this.questionId = questionId;
-        this.questionText = questionText;
-        this.options = options;
-        this.correctAnswerIndex = correctAnswerIndex;
-    }
+    public Question(int questionId, String questionText, List<String> options, 
+               int correctAnswerIndex, int points, String explanation) {
+    this.questionId = questionId;
+    this.questionText = questionText;
+    this.options = options;
+    this.correctAnswerIndex = correctAnswerIndex;
+    this.points = points;
+}
+
 
     public int getQuestionId() {
         return questionId;
@@ -46,8 +50,34 @@ public class Question {
     public void setCorrectAnswerIndex(int correctAnswerIndex) {
         this.correctAnswerIndex = correctAnswerIndex;
     }
+    
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
 
     public boolean isCorrectAnswer(int answerIndex) {
         return answerIndex == correctAnswerIndex;
+    }
+    public String getCorrectAnswerText() {
+        if (options == null) return "";
+        if (correctAnswerIndex < 0) return "";
+        if (correctAnswerIndex >= options.size()) return "";
+        return options.get(correctAnswerIndex);
+    }
+
+    public int getOptionCount() {
+        if (options == null) return 0;
+        return options.size();
+    }
+
+    public boolean isValidOptionIndex(int index) {
+        if (options == null) return false;
+        if (index < 0) return false;
+        if (index >= options.size()) return false;
+        return true;
     }
 }
