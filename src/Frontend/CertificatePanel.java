@@ -8,6 +8,11 @@ import BackEnd.Certificate;
 import BackEnd.Srudent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 /**
  *
@@ -145,43 +150,59 @@ private Srudent loggedStudent;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadActionPerformed
-     try {
-    // File name
-    String filename = "certificate_" + cert.getCertificateId() + ".pdf";
+      String filename = "certificate_" + cert.getCertificateId() + ".pdf";
 
-    // Create PDF
-    com.itextpdf.text.Document pdfDoc = new com.itextpdf.text.Document();
-    com.itextpdf.text.pdf.PdfWriter.getInstance(pdfDoc, new java.io.FileOutputStream(filename));
+    // Use try-with-resources to ensure the document is closed properly
+    try (PDDocument document = new PDDocument()) {
 
-    pdfDoc.open();
+        // 1. Create a new page
+        PDPage page = new PDPage(PDRectangle.A4);
+        document.addPage(page);
 
-    // Title
-    com.itextpdf.text.Font titleFont = new com.itextpdf.text.Font(
-            com.itextpdf.text.Font.FontFamily.HELVETICA, 20, com.itextpdf.text.Font.BOLD);
-    pdfDoc.add(new com.itextpdf.text.Paragraph("Certificate of Completion", titleFont));
-    pdfDoc.add(new com.itextpdf.text.Paragraph("\n"));
+        // 2. Create a content stream to write into the page
+        try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
 
-    // Content
-    pdfDoc.add(new com.itextpdf.text.Paragraph("Certificate ID : " + cert.getCertificateId()));
-    pdfDoc.add(new com.itextpdf.text.Paragraph("Student ID     : " + cert.getStudentId()));
-    pdfDoc.add(new com.itextpdf.text.Paragraph("Course ID      : " + cert.getCourseId()));
-    pdfDoc.add(new com.itextpdf.text.Paragraph("Issue Date     : " + cert.getIssueDate()));
+            // Begin text
+            contentStream.beginText();
 
-    pdfDoc.close();
+            // Set font and size for the title
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
+            contentStream.newLineAtOffset(50, 750); // start near top
+            contentStream.showText("Certificate of Completion");
 
-    // Show success message
-    JOptionPane.showMessageDialog(this,
-            "Certificate saved as:\n" + filename,
-            "Download Successful",
-            JOptionPane.INFORMATION_MESSAGE);
+            // Move down for content
+            contentStream.newLineAtOffset(0, -40);
+            contentStream.setFont(PDType1Font.HELVETICA, 14);
 
-} catch (Exception ex) {
-    ex.printStackTrace();
-    JOptionPane.showMessageDialog(this,
-            "Error downloading certificate.",
-            "Error",
-            JOptionPane.ERROR_MESSAGE);
-}
+            // Add certificate details
+            contentStream.showText("Certificate ID : " + cert.getCertificateId());
+            contentStream.newLineAtOffset(0, -20);
+            contentStream.showText("Student ID     : " + cert.getStudentId());
+            contentStream.newLineAtOffset(0, -20);
+            contentStream.showText("Course ID      : " + cert.getCourseId());
+            contentStream.newLineAtOffset(0, -20);
+            contentStream.showText("Issue Date     : " + cert.getIssueDate());
+
+            // End text
+            contentStream.endText();
+        }
+
+        // Save the PDF
+        document.save(new java.io.File(filename));
+
+        // Show success message
+        JOptionPane.showMessageDialog(this,
+                "Certificate saved as:\n" + filename,
+                "Download Successful",
+                JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this,
+                "Error downloading certificate.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnDownloadActionPerformed
 
 
