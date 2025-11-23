@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/AuthService.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/CourseManager.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/CurrentUser.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/HashUtil.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/JsonDatabaseManager.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/LessonManager.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/UserManager.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Services/PasswordHasher.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/AvailableCourses.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/EnrolledCourses.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/EnrollinCourse.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/InstructorDashboardFrame.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/LessonManagerDialog.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/Login.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/NewJDialog.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/SignUp.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/Start.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/StudentDashboardFrame.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/Frontend/ViewLessons.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/models/Lesson.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/models/Quiz.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/models/Question.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/models/QuizAttempt.java</file>
+            <file>file:/C:/Users/El-hassan/Documents/GitHub/Lab8/src/models/Student.java</file>
+        </group>
+    </open-files>
+</project-private>
